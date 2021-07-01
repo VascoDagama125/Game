@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<head>
+	<title>KÓŁKO I KRZYŻYK</title>
+<link rel="stylesheet" href="gra.css">
+	
+
+</head>
+
+<body>
+	<div id="informacje">
+		<h1 id="jeden">KÓŁKO I KRZYŻYK</h1>
+		<p>
+		<h2>Instrukcja gry:</h2>
+		Gracze na zmiane klikają w pola planszy, gracz pierwszy zaczyna O, a gracz drugi gra X. Rzyczę miłej rozgrywki</p>
+	</div>
+	<table id="plansza">
+		<tr >
+			<td onClick="funkcja(1)"><img src="https://media.cdnandroid.com/87/8a/ea/37/imagen-kwadratowa-masakra-0thumb.jpeg"  alt="kolko lub krzyzyk" id="1"></td>
+			<td onClick="funkcja(2)"><img src="https://media.cdnandroid.com/87/8a/ea/37/imagen-kwadratowa-masakra-0thumb.jpeg" alt="kolko lub krzyzyk" id="2"></td>
+			<td onClick="funkcja(3)"><img src="https://media.cdnandroid.com/87/8a/ea/37/imagen-kwadratowa-masakra-0thumb.jpeg" alt="kolko lub krzyzyk" id="3"></td>
+		</tr>
+		<tr>
+			<td onClick="funkcja(4)"><img src="https://media.cdnandroid.com/87/8a/ea/37/imagen-kwadratowa-masakra-0thumb.jpeg" alt="kolko lub krzyzyk" id="4"></td>
+			<td onClick="funkcja(5)"><img src="https://media.cdnandroid.com/87/8a/ea/37/imagen-kwadratowa-masakra-0thumb.jpeg" alt="kolko lub krzyzyk" id="5"></td>
+			<td onClick="funkcja(6)"><img src="https://media.cdnandroid.com/87/8a/ea/37/imagen-kwadratowa-masakra-0thumb.jpeg" alt="kolko lub krzyzyk" id="6"></td>
+		</tr>
+		<tr>
+			<td onClick="funkcja(7)"><img src="https://media.cdnandroid.com/87/8a/ea/37/imagen-kwadratowa-masakra-0thumb.jpeg" alt="kolko lub krzyzyk" id="7"></td>
+			<td onClick="funkcja(8)"><img src="https://media.cdnandroid.com/87/8a/ea/37/imagen-kwadratowa-masakra-0thumb.jpeg" alt="kolko lub krzyzyk" id="8"></td>
+			<td onClick="funkcja(9)"><img src="https://media.cdnandroid.com/87/8a/ea/37/imagen-kwadratowa-masakra-0thumb.jpeg" alt="kolko lub krzyzyk" id="9"></td>
+		</tr>
+	</table>
+
+	<div>
+		<table>
+			<tr>
+				<td>
+					<form action='K_i_k.html'>
+						<input type="submit" value="Graj od nowa" />
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<script type="text/javascript">
+		var co = 1;
+		var x = "X";
+		var o = "O";
+		var temp = "i";
+		var temp2 = 0;
+		var tab = ['i', 'i', 'i', 'i', 'i', 'i', 'i', 'i', 'i', 'i'];
+		var spr = 0;
+		var koniec = 0;
+
+
+		function funkcja(pozycja) {
+
+			if (koniec == 0) {
+				if (tab[pozycja] == 'i') {
+
+					if (co % 2 == 1) {
+						
+						document.getElementById(pozycja).src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRklAkZYW829gXYYmGLG_FOosd0FJMjbVL5RA&usqp=CAU';
+						tab[pozycja] = o;
+					} else {
+						
+						document.getElementById(pozycja).src = 'https://freetictactoe.com/images/mark-x.png';
+						tab[pozycja] = x;
+					}
+					co++;
+					
+
+					for (temp2 = 1; temp2 <= 2; temp2++) {
+						if (temp2 == 1) {
+							i = x;
+						}
+						else {
+							i = o;
+						}
+						for (spr = 0; spr <= 9; spr += 3) 
+						{
+							if (tab[1 + spr] == i && tab[2 + spr] == i && tab[3 + spr] == i) {
+								alert("Wygrana " + i);
+								koniec = 1;
+							}
+						}
+
+						for (spr = 1; spr <= 3; spr++) 
+						{
+							if (tab[spr] == i && tab[spr + 3] == i && tab[spr + 6] == i) {
+								alert("Wygrana " + i);
+								koniec = 1;
+							}
+						}
+
+						if (tab[1] == i && tab[5] == i && tab[9] == i) {
+							alert("Wygrana " + i);
+							koniec = 1;
+						}
+						if (tab[3] == i && tab[5] == i && tab[7] == i) {
+							alert("Wygrana " + i);
+							koniec = 1;
+						}
+					}
+					
+
+				} else {
+					alert('Pole wypełnione, spróbuj inne');
+				}
+				
+				spr = 0;
+				for (temp2 = 1; temp2 <= 9; temp2++) {
+					if (tab[temp2] != 'i') {
+						spr++;
+					}
+					if (spr >= 9) {
+						alert('Koniec gry');
+						koniec = 1;
+					}
+				}
+			} else {
+				alert('Gra się już skończyła!');
+			}
+		}
+
+	</script>
+</body>
+
+</html>

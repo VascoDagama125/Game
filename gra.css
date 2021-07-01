@@ -1,0 +1,29 @@
+
+		body {
+			background-color: #b1fc38;
+		}
+		form {
+			margin: 5px;
+		}
+		#informacje{
+			margin-left: 2%;
+			border: 7px dotted red;
+		}
+		#jeden{
+			text-align: center;
+			color:red;
+		}
+		#plansza{
+			background-color: #79b020;
+			margin: 5%;
+			border: 10px solid #5e8f0e;
+		}
+		td {
+			
+			height: 200px;
+			width: 200px;
+			text-align: center;
+			font-size: 70px;
+			padding:0;
+			
+		}
